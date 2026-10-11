@@ -141,7 +141,7 @@ public:
     int operator-(const Date& other) const {
         long long days1 = toDays();
         long long days2 = other.toDays();
-        return static_cast<int>(std::llabs(days1 - days2));
+        return static_cast<int>(days1 > days2 ? days1 - days2 : days2 - days1);
     }
     
     // Output operator
