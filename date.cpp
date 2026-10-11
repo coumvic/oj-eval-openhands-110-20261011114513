@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
-using namespace std;
+#include <cmath>
 
 const int month_days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -141,69 +141,70 @@ public:
     int operator-(const Date& other) const {
         long long days1 = toDays();
         long long days2 = other.toDays();
-        return abs(days1 - days2);
+        return static_cast<int>(std::llabs(days1 - days2));
     }
     
     // Output operator
-    friend ostream& operator<<(ostream& os, const Date& date) {
+    // Output operator
+    friend std::ostream& operator<<(std::ostream& os, const Date& date) {
         os << date._year << '-' << date._month << '-' << date._day;
         return os;
     }
     
     // Output function (backup)
     void out() {
-        cout << _year << '-' << _month << '-' << _day << endl;
+        std::cout << _year << '-' << _month << '-' << _day << std::endl;
     }
 };
 
 void Test()
 {
     int op;
-    cin >> op;
+    std::cin >> op;
     int yy, mm, dd;
     if (op == 1 || op == 0)
     {
         Date d0;
         Date d1(2000, 2, 29);
         Date d2(1900, 2, 29);
-        cout << d0 << endl;
-        cout << d1 << endl;
-        cout << d2 << endl;
+        std::cout << d0 << std::endl;
+        std::cout << d1 << std::endl;
+        std::cout << d2 << std::endl;
         //d0.out(); d1.out(); d2.out();
     }
     if (op == 2 || op == 0)
     {
-        cin >> yy >> mm >> dd;
+        std::cin >> yy >> mm >> dd;
         Date d0(yy, mm, dd);
-        for (int i=0;i<5;++i) cout << ++d0 << endl; //(++d0).out();
-        for (int i=0;i<5;++i) cout << d0++ << endl; //(d0++).out();
-        for (int i=0;i<5;++i) cout << d0-- << endl; //(d0--).out();
-        for (int i=0;i<2;++i) cout << --d0 << endl; //(--d0).out();
-        cout << d0 << endl;
+        for (int i=0;i<5;++i) std::cout << ++d0 << std::endl; //(++d0).out();
+        for (int i=0;i<5;++i) std::cout << d0++ << std::endl; //(d0++).out();
+        for (int i=0;i<5;++i) std::cout << d0-- << std::endl; //(d0--).out();
+        for (int i=0;i<2;++i) std::cout << --d0 << std::endl; //(--d0).out();
+        std::cout << d0 << std::endl;
         //d0.out();
     }
     if (op == 3 || op == 0)
     {
-        cin >> yy >> mm >> dd;
+        std::cin >> yy >> mm >> dd;
         Date d0(yy, mm, dd);
-        cout << d0 + 100 << endl;
+        std::cout << d0 + 100 << std::endl;
         // (d0+100).out();
-        cout << d0 - 1000 << endl;
+        std::cout << d0 - 1000 << std::endl;
         // (d0-1000).out();
     }
     if (op == 4 || op == 0)
     {
-        cin >> yy >> mm >> dd;
+        std::cin >> yy >> mm >> dd;
         Date d0(yy, mm, dd);
         Date d1(2020, 12, 21);
-        cout << (d0 < d1) << endl;
+        std::cout << (d0 < d1) << std::endl;
     }
     if (op == 5 || op == 0)
     {
-        cin >> yy >> mm >> dd;
+        std::cin >> yy >> mm >> dd;
         Date d0(yy, mm, dd);
         Date d1(1912, 6, 23);
-        cout << d0 - d1 << endl;
+        std::cout << d0 - d1 << std::endl;
     }
 }
 
