@@ -1,14 +1,5 @@
-CXX = g++
-CXXFLAGS = -std=c++14 -O2 -Wall -Wextra -Wpedantic
-TARGET = code
-SOURCES = date.cpp
-
-all: $(TARGET)
-
-$(TARGET): $(SOURCES)
-	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(TARGET)
+all:
+	g++ -std=c++14 date.cpp -o code
 
 clean:
-	rm -f $(TARGET)
-
-.PHONY: all clean
+	rm -f code
